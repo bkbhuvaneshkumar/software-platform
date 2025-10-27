@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer - Free Software Store</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #8b5cf6;
+            --secondary: #06d6a0;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #cbd5e1;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gradient-dark: linear-gradient(135deg, var(--darker), var(--dark));
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--darker);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+        }
+
+        .footer-brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            color: var(--gray-light);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--gray-light);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+        }
+
+        /* Social Media Styles */
+        .social-section {
+            margin-bottom: 2rem;
+        }
+
+        .social-title {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-title {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--gray-light);
+        }
+
+        .newsletter-button {
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 3rem 0 2rem;
+            }
+            
+            .footer-content {
+                padding: 0 1.5rem;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .footer-legal {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo-container">
+                         <img src="/logo.png" alt="Logo" class="logo">
+                        <span class="footer-brand-name">Free Software Store</span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted platform for premium software solutions. 
+                        Discover, download, and experience the best applications 
+                        tailored for your needs.
+                    </p>
+                    
+                    <div class="social-section">
+                        <h4 class="social-title">Follow Us</h4>
+                        <div class="social-links">
+                            
+                           
+                            <a href="https://www.instagram.com/freesoftwarestore/" class="social-link" aria-label="Instagram">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="https://t.me/freesoftwareshub" class="social-link" aria-label="Telegram">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                             <path d="M9.99988 15.1701L9.87088 18.8191C10.2139 18.8191 10.3619 18.6701 10.5399 18.4941L12.3279 16.7871L16.1169 19.5741C16.8129 19.9601 17.3059 19.7641 17.4959 18.9361L20.4539 5.51509L20.4549 5.51409C20.6759 4.48209 20.0539 4.04209 19.3809 4.29009L3.21988 10.4961C2.21388 10.8891 2.22888 11.4591 3.04688 11.7041L7.17888 12.9961L16.7419 7.07909C17.1939 6.80009 17.6039 6.96009 17.2639 7.26009L9.99988 15.1701Z"/>
+                            </svg>
+                            </a>
+                            <a href="http://t.me/freesoftwareadmin" class="social-link" aria-label="Facebook">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="http://t.me/freesoftwareadmin" class="social-link" aria-label="Twitter">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="/">Home</a>
+                    <a href="/user">User Page</a>
+                    <a href="/user#all-software">All Software</a>
+                    <a href="/">About Us</a>
+                    <a href="/">Contact Us</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="http://t.me/freesoftwareadmin">Help Center</a>
+                    <a href="http://t.me/freesoftwareadmin">Documentation</a>
+                    <a href="http://t.me/freesoftwareadmin">Blog</a>
+                    <a href="http://t.me/freesoftwareadmin">Tutorials</a>
+                    <a href="http://t.me/freesoftwareadmin">FAQ</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span>support@freesoftwarestore.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>123 Tech Street, Silicon Valley, CA</span>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h4 class="newsletter-title">Newsletter</h4>
+                        <p style="color: var(--gray-light); margin-bottom: 1rem; font-size: 0.9rem;">
+                            Stay updated with our latest software releases
+                        </p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                            <button type="submit" class="newsletter-button">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2016 to 2025 Free Software Store | All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="/">Privacy Policy</a>
+                    <a href="/">Terms of Service</a>
+                    <a href="/">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('.newsletter-input').value;
+                // Here you would typically send the email to your backend
+                alert(`Thank you for subscribing with: ${email}`);
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>

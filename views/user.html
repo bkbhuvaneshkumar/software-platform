@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Software Collection - Free Software Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="main-content">
+        <!-- Enhanced Hero Section -->
+        <section class="user-hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <span>🎯 Premium Quality, Unbeatable Prices</span>
+                </div>
+                <h1 class="hero-title">Discover Amazing Software Solutions</h1>
+                <p class="hero-subtitle">
+                    Access our curated collection of high-performance applications. 
+                    Most software available for <strong>FREE</strong> or at incredibly 
+                    <strong>affordable prices</strong> starting from just ₹9
+                </p>
+                <div class="hero-features">
+                    <div class="feature-pill">
+                        <span class="icon">💰</span>
+                        Budget-Friendly
+                    </div>
+                    <div class="feature-pill">
+                        <span class="icon">🆓</span>
+                        Free Options
+                    </div>
+                    <div class="feature-pill">
+                        <span class="icon">⚡</span>
+                        Instant Download
+                    </div>
+                    <div class="feature-pill">
+                        <span class="icon">🛡️</span>
+                        Virus-Free
+                    </div>
+                </div>
+            </div>
+            <div class="hero-background-elements">
+                <div class="floating-element el-1">₹</div>
+                <div class="floating-element el-2">FREE</div>
+                <div class="floating-element el-3">💎</div>
+                <div class="floating-element el-4">⚡</div>
+            </div>
+        </section>
+
+        <!-- Pricing Banner -->
+        <section class="pricing-banner">
+            <div class="container">
+                <div class="banner-content">
+                    <div class="banner-text">
+                        <h3>✨ Special Offer: Most Applications Under ₹99</h3>
+                        <p>Premium software doesn't have to be expensive. Get professional tools at unbelievable prices.</p>
+                    </div>
+                    <div class="banner-price">
+                        <span class="price-from">From</span>
+                        <span class="price-amount">₹9</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Software Applications -->
+        <section id="all-software" class="all-apps">
+            <div class="container">
+                <div class="apps-header">
+                    <h2 class="section-title">📦 Complete Software Collection</h2>
+                    <p class="section-subtitle">
+                        Browse our entire catalog of <span class="highlight">affordable</span> and 
+                        <span class="highlight">free</span> applications
+                    </p>
+                    <div class="apps-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="total-apps">0</span>
+                            <span class="stat-label">Total Apps</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="free-apps">0</span>
+                            <span class="stat-label">Free Apps</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="budget-apps">0</span>
+                            <span class="stat-label">Under ₹99</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="apps-grid" id="all-apps">
+                    <!-- All apps from database will be loaded here -->
+                </div>
+                
+                <!-- Loading Animation -->
+                <div class="loading-section" id="loading-section">
+                    <div class="loading-spinner"></div>
+                    <p>Loading amazing software deals...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="user-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Enhance Your Digital Experience?</h2>
+                    <p>Join thousands of satisfied users who've transformed their workflow with our affordable software solutions.</p>
+                    <div class="cta-buttons">
+                        <a href="https://t.me/freesoftwareshub" class="btn btn-primary btn-large">
+                            <span>Join telegram & Explore All Software</span>
+                            
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Application Detail Modal -->
+    <div id="appModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/js/script.js"></script>
+    <script>
+        // Load header and footer
+        fetch('/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('/footer')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        // Load applications
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDefaultApps();
+            loadAllApps();
+            setupModal();
+            updateAppStats();
+        });
+
+        // Update application statistics
+        async function updateAppStats() {
+            try {
+                const response = await fetch('/api/applications');
+                const apps = await response.json();
+                
+                document.getElementById('total-apps').textContent = apps.length;
+                document.getElementById('free-apps').textContent = Math.floor(apps.length * 0.6); // Simulate 60% free
+                document.getElementById('budget-apps').textContent = Math.floor(apps.length * 0.8); // Simulate 80% under ₹99
+            } catch (error) {
+                console.error('Error loading app stats:', error);
+            }
+        }
+    </script>
+</body>
+</html>
